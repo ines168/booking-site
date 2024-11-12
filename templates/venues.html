@@ -1,0 +1,33 @@
+{% extends "layout.html" %} {% block title %}Venues{% endblock %} {% block content %}
+<h1>Venues</h1>
+<ul class="venues-list">
+  {% for venue in venues %}
+
+  <li>
+    <a href="/venues/{{venue.id}}">{{ venue.name }}</a>
+    <button class="delete-btn" data-id="{{venue.id}}">&times;</button>
+  </li>
+
+  {% endfor %}
+</ul>
+
+<div>
+  <p>Create a new venue:</p>
+  <form action="/venues" method="POST">
+    <div>
+      <label for="name">Name</label>
+      <input type="text" id="name" name="name" required />
+    </div>
+    <div>
+      <label for="address">Addres</label>
+      <input type="text" id="address" name="address" required />
+    </div>
+    <div>
+      <label for="phone">Phone</label>
+      <input type="text" id="phone" name="phone" required />
+    </div>
+    <button type="submit">Create Venue</button>
+  </form>
+</div>
+
+{% endblock %}

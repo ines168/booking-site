@@ -1,0 +1,25 @@
+{% extends "layout.html" %} {% block title %}Venue{% endblock %} {% block content %}
+<h3>{{ venue.name }}</h3>
+<p>ID: {{venue.id}}</p>
+<p>Address: {{venue.address}}</p>
+<p>Phone: {{venue.phone}}</p>
+
+<div>
+  <h3>Update Venue:</h3>
+  <form action="/venues/{{venue.id}}" method="POST">
+    <div>
+      <label for="name">Name</label>
+      <input type="text" id="name" name="name" required value="{{venue.name}}" />
+    </div>
+    <div>
+      <label for="address">Addres</label>
+      <input type="text" id="address" name="address" required value="{{venue.address}}" />
+    </div>
+    <div>
+      <label for="phone">Phone</label>
+      <input type="text" id="phone" name="phone" required value="{{venue.phone}}" />
+    </div>
+    <button type="submit">Update Venue</button>
+  </form>
+</div>
+{% endblock %}
