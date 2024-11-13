@@ -47,3 +47,27 @@ for (let i=0; i<deleteArtistBtns.length; i++) {
         })
     }
 }
+
+const deleteShowBtns = document.querySelectorAll('.show-delete');
+for (let i=0; i<deleteShowBtns.length; i++) {
+    const deleteBtn = deleteShowBtns[i];
+    deleteBtn.onclick = function(e) {
+        const show_id = e.target.dataset.id;
+        fetch('/shows/'+show_id, {
+            method:'DELETE',
+        })
+        .then(response => {
+            if(response.ok) {
+                return response.json();
+            } else {
+                throw new Error('Failed to delete show');
+            }
+        })
+        .then(() => {
+            window.location.reload()
+        })
+        .catch(error => {
+            console.log('fetch failed', error)
+        })
+    }
+}

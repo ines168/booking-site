@@ -1,0 +1,33 @@
+{% extends 'layout.html' %} {% block title %} Shows {% endblock %} {% block content %}
+<h1>Shows</h1>
+<div class="container">
+  {% for show in shows %}
+  <div class="show-card">
+    <button class="delete-btn show-delete" data-id="{{show.id}}">&times;</button>
+    <img src="" alt="" />
+    <p>date</p>
+    <h3><a href="/shows/{{show.id}}">{{show.artists.name}}</a></h3>
+    <p>playing at</p>
+    <h4>{{show.venues.name}}</h4>
+  </div>
+  {% endfor %}
+</div>
+<div>
+  <form action="/shows" method="POST">
+    <div>
+      <label for="name">Name:</label>
+      <input type="text" id="name" name="name" />
+    </div>
+    <div>
+      <label for="artistId">Artist ID:</label>
+      <input type="number" id="artistId" name="artistId" required />
+    </div>
+    <div>
+      <label for="venueId">Venue ID:</label>
+      <input type="number" id="venueId" name="venueId" required />
+    </div>
+    <button type="submit">Create Show</button>
+  </form>
+</div>
+
+{% endblock %}
