@@ -32,14 +32,16 @@ main {
   padding: 20px;
 }
 
-.venues-list {
+.venues-list,
+.artist-list {
   list-style: none;
   margin: 0;
   padding: 0;
   width: 200px;
 }
 
-.venues-list li {
+.venues-list li,
+.artist-list li {
   clear: both;
 }
 

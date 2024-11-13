@@ -1,6 +1,6 @@
 from flask import Flask, jsonify, redirect, render_template, request
-from models import db, Venue
-from .views import venues_bp
+from models import db, Venue, Artist
+from views import venues_bp, artists_bp
 from flask_sqlalchemy import SQLAlchemy
 from dotenv import load_dotenv
 import os
@@ -15,6 +15,7 @@ db.init_app(app)
 migrate = Migrate(app, db)
 
 app.register_blueprint(venues_bp)
+app.register_blueprint(artists_bp)
 
 # with app.app_context():
 #     db.create_all()

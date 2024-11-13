@@ -18,6 +18,11 @@ class Artist(db.Model):
     __tablename__ = 'artists'
     id=db.Column(db.Integer, primary_key=True)
     name=db.Column(db.String, nullable=False)
+    address=db.Column(db.String, nullable=False)
+    phone=db.Column(db.String, nullable=False)
+
+    def __repr__(self):
+        return f'<Artist: {self.name}>'
 
 class Show(db.Model):
     __tablename__ = 'shows'

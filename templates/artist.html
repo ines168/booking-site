@@ -1,0 +1,25 @@
+{% extends 'layout.html' %} {% block title %} Artist {% endblock %} {% block content %}
+<h1>{{artist.name}}</h1>
+<p>ID: {{artist.id}}</p>
+<p>Address: {{artist.address}}</p>
+<p>Phone: {{artist.phone}}</p>
+
+<div>
+  <h3>Update Artist:</h3>
+  <form action="/artists/{{artist.id}}" method="POST">
+    <div>
+      <label for="name">Name</label>
+      <input type="text" id="name" name="name" value="{{artist.name}}" required />
+    </div>
+    <div>
+      <label for="name">Address</label>
+      <input type="text" id="address" name="address" value="{{artist.address}}" required />
+    </div>
+    <div>
+      <label for="name">Phone</label>
+      <input type="text" id="phone" name="phone" value="{{artist.phone}}" required />
+    </div>
+    <button type="submit">Update Artist</button>
+  </form>
+</div>
+{% endblock %}
