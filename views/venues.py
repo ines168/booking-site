@@ -1,4 +1,6 @@
+from collections import defaultdict
 from flask import Blueprint, request, jsonify, redirect, url_for, render_template
+from sqlalchemy import func
 from models import db, Venue
 import sys
 
@@ -7,15 +9,20 @@ venues_bp = Blueprint('venues', __name__)
 @venues_bp.route('/venues')
 def get_venues():
     venues = Venue.query.all()
-    return render_template('venues.html', venues=venues)
+    venues_by_city = defaultdict(list)
+    for venue in venues:
+        city = venue.city.strip().title()
+        venues_by_city[city].append({'id':venue.id, 'name':venue.name})
+    return render_template('venues.html', venues_by_city=venues_by_city)
 
 @venues_bp.route('/venues', methods=['POST'])
 def create_venue():
     try:
         name = request.form.get('name')
         address = request.form.get('address')
+        city = request.form.get('city')
         phone = request.form.get('phone')
-        new_venue = Venue(name=name, address=address, phone=phone)
+        new_venue = Venue(name=name, address=address, phone=phone, city=city)
         db.session.add(new_venue)
         db.session.commit()
     except:
@@ -36,6 +43,7 @@ def update_venue(venue_id):
         venue = Venue.query.filter_by(id=venue_id).first()
         name = request.form.get('name')
         address = request.form.get('address')
+        city = request.form.get('city')
         phone = request.form.get('phone')
         # data = request.get_json()
         # name = data.get('name')
@@ -48,7 +56,7 @@ def update_venue(venue_id):
             db.session.query(Venue).filter_by(id=venue_id).update({
             "name": name,
             "address": address,
-            "phone": phone
+            "phone": phone, "city":city
         })
             db.session.commit()
             return redirect(f'/venues/{venue_id}')

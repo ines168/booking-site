@@ -8,8 +8,9 @@ class Venue(db.Model):
     name=db.Column(db.String, nullable=False)
     address = db.Column(db.String, nullable=False)
     phone = db.Column(db.String, nullable=False)
+    city = db.Column(db.String, nullable=False)
     shows = db.relationship('Show', backref='venues', lazy=True)
-    # city, state, link
+    # state, link
 
     def __repr__(self):
         return f'<Venue: {self.name}>'

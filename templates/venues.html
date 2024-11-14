@@ -1,15 +1,14 @@
 {% extends "layout.html" %} {% block title %}Venues{% endblock %} {% block content %}
 <h1>Venues</h1>
+
+{% for city, venues in venues_by_city.items() %}
+<h2>{{ city }}</h2>
 <ul class="venues-list">
   {% for venue in venues %}
-
-  <li>
-    <a href="/venues/{{venue.id}}">{{ venue.name }}</a>
-    <button class="delete-btn venue-delete" data-id="{{venue.id}}">&times;</button>
-  </li>
-
+  <li><a href="/venues/{{venue.id}}">{{ venue.name }}</a><button class="delete-btn venue-delete" data-id="{{venue.id}}">&times;</button></li>
   {% endfor %}
 </ul>
+{% endfor %}
 
 <div>
   <p>Create a new venue:</p>
@@ -19,8 +18,12 @@
       <input type="text" id="name" name="name" required />
     </div>
     <div>
-      <label for="address">Addres</label>
+      <label for="address">Address</label>
       <input type="text" id="address" name="address" required />
+    </div>
+    <div>
+      <label for="city">City</label>
+      <input type="text" id="city" name="city" required />
     </div>
     <div>
       <label for="phone">Phone</label>
