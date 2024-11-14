@@ -9,7 +9,7 @@ class Venue(db.Model):
     address = db.Column(db.String, nullable=False)
     phone = db.Column(db.String, nullable=False)
     city = db.Column(db.String, nullable=False)
-    shows = db.relationship('Show', backref='venues', lazy=True)
+    shows = db.relationship('Show', backref='venues', lazy=True, cascade='all, delete-orphan')
     # state, link
 
     def __repr__(self):
@@ -22,7 +22,7 @@ class Artist(db.Model):
     name=db.Column(db.String, nullable=False)
     address=db.Column(db.String, nullable=False)
     phone=db.Column(db.String, nullable=False)
-    shows=db.relationship('Show', backref='artists', lazy=True)
+    shows=db.relationship('Show', backref='artists', lazy=True, cascade='all, delete-orphan')
 
     def __repr__(self):
         return f'<Artist: {self.name}>'
