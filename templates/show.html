@@ -1,30 +1,33 @@
 {% extends 'layout.html' %} {% block title %} Show {% endblock %} {% block content %}
-<h1>{{show.artists.name}}</h1>
+<h1>{{show.artist.name}}</h1>
 
 <div class="show-card">
   <img src="" alt="" />
-  <p>date</p>
-  <h3><a href="/shows/{{show.id}}">{{show.artists.name}}</a></h3>
+  <p>{{show.start_time}}</p>
+  <p>{{show.name}}</p>
+  <h3><a href="/shows/{{show.id}}">{{show.artist.name}}</a></h3>
   <p>playing at</p>
-  <h4>{{show.venues.name}}</h4>
+  <h4>{{show.venue.name}}</h4>
 </div>
 
 <div>
-  <p>Update Show</p>
-  <form action="/shows/{{show.id}}" method="POST">
-    <div>
-      <label for="name">Name:</label>
-      <input type="text" id="name" name="name" value="{{show.name}}" />
-    </div>
-    <div>
-      <label for="artistId">Artist ID:</label>
-      <input type="number" id="artistId" name="artistId" value="{{show.artist_id}}" required />
-    </div>
-    <div>
-      <label for="venueId">Venue ID:</label>
-      <input type="number" id="venueId" name="venueId" value="{{show.venue_id}}" required />
-    </div>
-    <button type="submit">Update Show</button>
+  <form action="" method="POST" class="">
+    <h1 class="h3 mb-3 font-weight-normal">Update show:</h1>
+    {{form.hidden_tag()}}
+
+    {{ form.name.label() }}
+    {{ form.name(class='form-control')}}
+
+    {{ form.artist_id.label() }}
+    {{ form.artist_id(class='form-control') }}
+
+    {{ form.venue_id.label() }}
+    {{ form.venue_id(class='form-control') }}
+
+    {{ form.start_time.label() }}
+    {{ form.start_time(class='form-control') }}
+
+    <input type="submit" value="Update Show" class="btn btn-primary btn-lg btn-block">
   </form>
 </div>
 {% endblock %}

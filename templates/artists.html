@@ -1,31 +1,55 @@
-{% extends 'layout.html' %} {% block title %} Artists {% endblock %} {% block content %}
-<h1>Artists</h1>
-<ul class="artist-list">
-  {% for artist in artists %}
-  <li>
-    <a href="/artists/{{artist.id}}">{{artist.name}}</a>
-    <button class="delete-btn artist-delete" data-id="{{artist.id}}">&times;</button>
-  </li>
-  {% endfor %}
-</ul>
+{% extends 'layout.html' %}
+{% block title %}
+Artists
+{% endblock %}
+{% block content %}
 
-<div>
-  <p>Create a new artist:</p>
-  <form action="/artists" method="POST">
-    <div>
-      <label for="name">Name</label>
-      <input type="text" id="name" name="name" required />
-    </div>
-    <div>
-      <label for="name">Address</label>
-      <input type="text" id="address" name="address" required />
-    </div>
-    <div>
-      <label for="name">Phone</label>
-      <input type="text" id="phone" name="phone" required />
-    </div>
-    <button type="submit">Create Artist</button>
-  </form>
+
+<div class="container">
+  <div>
+    <h1>Artists</h1>
+    <ul class="artist-list">
+      {% for artist in artists %}
+      <li>
+        <a href="/artists/{{artist.id}}">{{artist.name}}</a>
+        <button class="delete-btn artist-delete" data-id="{{artist.id}}">&times;</button>
+      </li>
+      {% endfor %}
+    </ul>
+  </div>
+
+  <div>
+    <form action="" method="POST" class="">
+      <h1 class="h3 mb-3 font-weight-normal">Do you want to create an artist:</h1>
+      {{form.hidden_tag()}}
+
+      {{ form.name.label() }}
+      {{ form.name(class='form-control')}}
+
+      {{ form.address.label() }}
+      {{ form.address(class='form-control') }}
+
+      {{ form.city.label() }}
+      {{ form.city(class='form-control') }}
+
+      {{ form.state.label() }}
+      {{ form.state(class='form-control') }}
+
+      {{ form.phone.label() }}
+      {{ form.phone(class='form-control') }}
+
+      {{ form.image_link.label() }}
+      {{ form.image_link(class='form-control') }}
+
+      {{ form.website_link.label() }}
+      {{ form.website_link(class='form-control') }}
+
+      {{ form.facebook_link.label() }}
+      {{ form.facebook_link(class='form-control') }}
+      <input type="submit" value="Create Artist" class="btn btn-primary btn-lg btn-block">
+    </form>
+  </div>
+
 </div>
 
 {% endblock %}

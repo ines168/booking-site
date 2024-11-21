@@ -15,7 +15,11 @@ for (let i = 0; i<deleteVenueBtns.length; i++) {
             }
         })
         .then(() => {
-            window.location.reload();
+            if (window.location.pathname=='/venues') {
+                window.location.reload();
+            } else {
+                window.location.href='/venues'
+            }
         })
         .catch(error => {
             console.log('fetch failed', error)

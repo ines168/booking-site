@@ -1,30 +1,42 @@
 {% extends "layout.html" %} {% block title %}Venue{% endblock %} {% block content %}
-<h3>{{ venue.name }}</h3>
-<p>ID: {{venue.id}}</p>
-<p>Address: {{venue.address}}</p>
-<p>Address: {{venue.city}}</p>
-<p>Phone: {{venue.phone}}</p>
-
+<div class="w-25">
+  <button class="delete-btn venue-delete" data-id="{{venue.id}}">&times;</button>
+  <h3>{{ venue.name }}</h3>
+  <p>ID: {{venue.id}}</p>
+  <p>Address: {{venue.address}}</p>
+  <p>Address: {{venue.city}}</p>
+  <p>Phone: {{venue.phone}}</p>
+</div>
 <div>
-  <h3>Update Venue:</h3>
-  <form action="/venues/{{venue.id}}" method="POST">
-    <div>
-      <label for="name">Name</label>
-      <input type="text" id="name" name="name" required value="{{venue.name}}" />
-    </div>
-    <div>
-      <label for="address">Addres</label>
-      <input type="text" id="address" name="address" required value="{{venue.address}}" />
-    </div>
-    <div>
-      <label for="city">City</label>
-      <input type="text" id="city" name="city" required value="{{venue.city}}" />
-    </div>
-    <div>
-      <label for="phone">Phone</label>
-      <input type="text" id="phone" name="phone" required value="{{venue.phone}}" />
-    </div>
-    <button type="submit">Update Venue</button>
+  <form action="" method="POST" class="">
+    <h1 class="h3 mb-3 font-weight-normal">Update a venue:</h1>
+    {{form.hidden_tag()}}
+
+    {{ form.name.label() }}
+    {{ form.name(class='form-control')}}
+
+    {{ form.address.label() }}
+    {{ form.address(class='form-control') }}
+
+    {{ form.city.label() }}
+    {{ form.city(class='form-control') }}
+
+    {{ form.state.label() }}
+    {{ form.state(class='form-control') }}
+
+    {{ form.phone.label() }}
+    {{ form.phone(class='form-control') }}
+
+    {{ form.image_link.label() }}
+    {{ form.image_link(class='form-control') }}
+
+    {{ form.website_link.label() }}
+    {{ form.website_link(class='form-control') }}
+
+    {{ form.facebook_link.label() }}
+    {{ form.facebook_link(class='form-control') }}
+
+    <input type="submit" value="Update Venue" class="btn btn-primary btn-lg btn-block">
   </form>
 </div>
 {% endblock %}

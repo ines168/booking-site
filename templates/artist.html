@@ -5,8 +5,38 @@
 <p>Phone: {{artist.phone}}</p>
 
 <div>
-  <h3>Update Artist:</h3>
-  <form action="/artists/{{artist.id}}" method="POST">
+  <form action="" method="POST" class="">
+    <h1 class="h3 mb-3 font-weight-normal">Update the artist:</h1>
+    {{form.hidden_tag()}}
+
+    {{ form.name.label() }}
+    {{ form.name(class='form-control')}}
+
+    {{ form.address.label() }}
+    {{ form.address(class='form-control') }}
+
+    {{ form.city.label() }}
+    {{ form.city(class='form-control') }}
+
+    {{ form.state.label() }}
+    {{ form.state(class='form-control') }}
+
+    {{ form.phone.label() }}
+    {{ form.phone(class='form-control') }}
+
+    {{ form.image_link.label() }}
+    {{ form.image_link(class='form-control') }}
+
+    {{ form.website_link.label() }}
+    {{ form.website_link(class='form-control') }}
+
+    {{ form.facebook_link.label() }}
+    {{ form.facebook_link(class='form-control') }}
+
+    <input type="submit" value="Update artist" class="btn btn-primary btn-lg btn-block">
+  </form>
+</div>
+<!-- <form action="/artists/{{artist.id}}" method="POST">
     <div>
       <label for="name">Name</label>
       <input type="text" id="name" name="name" value="{{artist.name}}" required />
@@ -20,6 +50,5 @@
       <input type="text" id="phone" name="phone" value="{{artist.phone}}" required />
     </div>
     <button type="submit">Update Artist</button>
-  </form>
-</div>
+  </form> -->
 {% endblock %}

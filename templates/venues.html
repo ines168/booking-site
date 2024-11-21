@@ -1,16 +1,53 @@
 {% extends "layout.html" %} {% block title %}Venues{% endblock %} {% block content %}
-<h1>Venues</h1>
+<div class="container">
+  <div>
+    <h1>Venues</h1>
 
-{% for city, venues in venues_by_city.items() %}
-<h2>{{ city }}</h2>
-<ul class="venues-list">
-  {% for venue in venues %}
-  <li><a href="/venues/{{venue.id}}">{{ venue.name }}</a><button class="delete-btn venue-delete" data-id="{{venue.id}}">&times;</button></li>
-  {% endfor %}
-</ul>
-{% endfor %}
+    {% for city, venues in venues_by_city.items() %}
+    <h2>{{ city }}</h2>
+    <ul class="venues-list">
+      {% for venue in venues %}
+      <li><a href="/venues/{{venue.id}}">{{ venue.name }}</a><button class="delete-btn venue-delete" data-id="{{venue.id}}">&times;</button></li>
+      {% endfor %}
+    </ul>
+    {% endfor %}
+  </div>
 
-<div>
+
+  <div>
+    <form action="" method="POST" class="">
+      <h1 class="h3 mb-3 font-weight-normal">Do you want to create a new venue:</h1>
+      {{form.hidden_tag()}}
+
+      {{ form.name.label() }}
+      {{ form.name(class='form-control')}}
+
+      {{ form.address.label() }}
+      {{ form.address(class='form-control') }}
+
+      {{ form.city.label() }}
+      {{ form.city(class='form-control') }}
+
+      {{ form.state.label() }}
+      {{ form.state(class='form-control') }}
+
+      {{ form.phone.label() }}
+      {{ form.phone(class='form-control') }}
+
+      {{ form.image_link.label() }}
+      {{ form.image_link(class='form-control') }}
+
+      {{ form.website_link.label() }}
+      {{ form.website_link(class='form-control') }}
+
+      {{ form.facebook_link.label() }}
+      {{ form.facebook_link(class='form-control') }}
+
+      <input type="submit" value="Create Venue" class="btn btn-primary btn-lg btn-block">
+    </form>
+  </div>
+
+  <!-- <div>
   <p>Create a new venue:</p>
   <form action="/venues" method="POST">
     <div>
@@ -31,6 +68,7 @@
     </div>
     <button type="submit">Create Venue</button>
   </form>
-</div>
+</div> -->
 
-{% endblock %}
+  {% endblock %}
+</div>

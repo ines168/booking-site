@@ -5,28 +5,33 @@
   <div class="show-card">
     <button class="delete-btn show-delete" data-id="{{show.id}}">&times;</button>
     <img src="" alt="" />
-    <p>date</p>
-    <h3><a href="/shows/{{show.id}}">{{show.artists.name}}</a></h3>
+    <p>{{show.start_time}}</p>
+    <p>{{show.name}}</p>
+    <h3><a href="/shows/{{show.id}}">{{show.artist.name}}</a></h3>
     <p>playing at</p>
-    <h4>{{show.venues.name}}</h4>
+    <h4>{{show.venue.name}}</h4>
   </div>
   {% endfor %}
 </div>
+
 <div>
-  <form action="/shows" method="POST">
-    <div>
-      <label for="name">Name:</label>
-      <input type="text" id="name" name="name" />
-    </div>
-    <div>
-      <label for="artistId">Artist ID:</label>
-      <input type="number" id="artistId" name="artistId" required />
-    </div>
-    <div>
-      <label for="venueId">Venue ID:</label>
-      <input type="number" id="venueId" name="venueId" required />
-    </div>
-    <button type="submit">Create Show</button>
+  <form action="" method="POST" class="">
+    <h1 class="h3 mb-3 font-weight-normal">Create a new show:</h1>
+    {{form.hidden_tag()}}
+
+    {{ form.name.label() }}
+    {{ form.name(class='form-control')}}
+
+    {{ form.artist_id.label() }}
+    {{ form.artist_id(class='form-control') }}
+
+    {{ form.venue_id.label() }}
+    {{ form.venue_id(class='form-control') }}
+
+    {{ form.start_time.label() }}
+    {{ form.start_time(class='form-control') }}
+
+    <input type="submit" value="Create Show" class="btn btn-primary btn-lg btn-block">
   </form>
 </div>
 

@@ -1,0 +1,41 @@
+{% extends 'layout.html' %}
+{% block title %}
+New Artist
+{% endblock %}
+{% block content %}
+<div class="container">
+
+    <form action="" method="POST" class="">
+        <h1 class="h3 mb-3 font-weight-normal">Create an artist:</h1>
+        {{form.hidden_tag()}}
+
+        {{ form.name.label() }}
+        {{ form.name(class='form-control')}}
+
+        {{ form.address.label() }}
+        {{ form.address(class='form-control') }}
+
+        {{ form.city.label() }}
+        {{ form.city(class='form-control') }}
+
+        {{ form.state.label() }}
+        {{ form.state(class='form-control') }}
+
+        {{ form.phone.label() }}
+        {{ form.phone(class='form-control') }}
+
+        {{ form.image_link.label() }}
+        {{ form.image_link(class='form-control') }}
+
+        {{ form.website_link.label() }}
+        {{ form.website_link(class='form-control') }}
+
+        {{ form.facebook_link.label() }}
+        {{ form.facebook_link(class='form-control') }}
+
+        <input type="submit" value="Create Artist" class="btn btn-primary btn-lg btn-block">
+    </form>
+
+</div>
+
+{% endblock %}
